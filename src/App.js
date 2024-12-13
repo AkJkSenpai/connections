@@ -93,14 +93,13 @@ const App = () => {
       }, {});
 
       if (Object.values(countByCategory).includes(3)) {
-        setMessage('You are one away from completing a group!');
         setMistakes((prev) => {
           const newMistakes = prev + 1;
           if (newMistakes >= maxMistakes) {
             setMessage('Game over! You have used all your tries.');
             setSelectedItems([]);
           } else {
-            setMessage('Incorrect selection. Try again!');
+            setMessage('You are one away from completing a group!');
           }
           return newMistakes;
         });
