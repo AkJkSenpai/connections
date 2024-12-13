@@ -33,6 +33,8 @@ const App = () => {
   const [message, setMessage] = useState('');
   const [completedGroups, setCompletedGroups] = useState([]);
   const [mistakes, setMistakes] = useState(0);
+  const [gameOver, setGameOver] = useState(false);
+  const [gameWon, setGameWon] = useState(false);
 
   const maxMistakes = 4;
 
@@ -43,7 +45,23 @@ const App = () => {
     Flowers: '#DDA0DD', // Purple
   };
 
+  useEffect(() => {
+    if (completedGroups.length === 4) {
+      setGameWon(true);
+      setMessage('Congratulations! You completed all groups!');
+    }
+  }, [completedGroups]);
+
+  useEffect(() => {
+    if (mistakes >= maxMistakes) {
+      setGameOver(true);
+      setMessage('Game over! You have used all your tries.');
+    }
+  }, [mistakes]);
+
   const handleItemClick = (index) => {
+    if (gameOver || gameWon) return;
+
     if (selectedItems.length < 4 || items[index].selected) {
       const newItems = [...items];
       const item = newItems[index];
@@ -63,10 +81,7 @@ const App = () => {
   };
 
   const checkCategories = () => {
-    if (mistakes >= maxMistakes) {
-      setMessage('Game over! You have used all your tries.');
-      return;
-    }
+    if (gameOver || gameWon) return;
 
     const selected = selectedItems.map((i) => items[i]);
     const categories = selected.map((item) => item.category);
@@ -130,6 +145,8 @@ const App = () => {
   };
 
   const shuffleItems = () => {
+    if (gameOver || gameWon) return;
+
     const shuffled = shuffleArray(items).map((item) => ({ ...item, selected: false }));
     setItems(shuffled);
     setSelectedItems([]);
@@ -139,6 +156,8 @@ const App = () => {
   return (
     <div className="app">
       <h1>Connections Game</h1>
+      {gameWon && <div className="win-box">You Win! 🎉</div>}
+      {gameOver && <div className="lose-box">Game Over! 😢</div>}
       <div className="completed-groups">
         {completedGroups.map((group, index) => (
           <div
@@ -164,7 +183,7 @@ const App = () => {
               className={`item ${item.selected ? 'selected' : ''}`}
               onClick={() => handleItemClick(index)}
             >
-              {item.text}
+              <span className="item-text">{item.text}</span>
             </div>
           )
         ))}
