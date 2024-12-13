@@ -28,6 +28,9 @@ const App = () => {
   const [selectedItems, setSelectedItems] = useState([]);
   const [message, setMessage] = useState('');
   const [completedGroups, setCompletedGroups] = useState([]);
+  const [mistakes, setMistakes] = useState(0);
+
+  const maxMistakes = 4;
 
   const categoryColors = {
     Fruits: '#FFD700', // Yellow
@@ -56,6 +59,11 @@ const App = () => {
   };
 
   const checkCategories = () => {
+    if (mistakes >= maxMistakes) {
+      setMessage('Game over! You have used all your tries.');
+      return;
+    }
+
     const selected = selectedItems.map((i) => items[i]);
     const categories = selected.map((item) => item.category);
     const uniqueCategories = [...new Set(categories)];
@@ -82,11 +90,39 @@ const App = () => {
 
       if (Object.values(countByCategory).includes(3)) {
         setMessage('You are one away from completing a group!');
+        setMistakes((prev) => {
+          const newMistakes = prev + 1;
+          if (newMistakes >= maxMistakes) {
+            setMessage('Game over! You have used all your tries.');
+            setSelectedItems([]);
+          } else {
+            setMessage('Incorrect selection. Try again!');
+          }
+          return newMistakes;
+        });
       } else {
-        setMessage('Incorrect selection. Try again!');
+        setMistakes((prev) => {
+          const newMistakes = prev + 1;
+          if (newMistakes >= maxMistakes) {
+            setMessage('Game over! You have used all your tries.');
+            setSelectedItems([]);
+          } else {
+            setMessage('Incorrect selection. Try again!');
+          }
+          return newMistakes;
+        });
       }
     } else {
-      setMessage('Incorrect selection. Try again!');
+      setMistakes((prev) => {
+        const newMistakes = prev + 1;
+        if (newMistakes >= maxMistakes) {
+          setMessage('Game over! You have used all your tries.');
+          setSelectedItems([]);
+        } else {
+          setMessage('Incorrect selection. Try again!');
+        }
+        return newMistakes;
+      });
     }
   };
 
@@ -104,13 +140,19 @@ const App = () => {
       <h1>Connections Game</h1>
       <div className="completed-groups">
         {completedGroups.map((group, index) => (
-          <div 
-            key={index} 
-            className="completed-group" 
+          <div
+            key={index}
+            className="completed-group"
             style={{ backgroundColor: categoryColors[group.category] }}
           >
             {group.category} group completed: {group.words.join(', ')}
           </div>
+        ))}
+      </div>
+      <div className="mistakes">
+        Mistakes remaining:
+        {[...Array(Math.max(0, maxMistakes - mistakes))].map((_, index) => (
+          <span key={index} className="mistake-dot"></span>
         ))}
       </div>
       <div className="grid">
