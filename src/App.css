@@ -18,6 +18,14 @@
   cursor: pointer;
   text-align: center;
   font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.item-text {
+  word-wrap: break-word;
+  text-align: center;
 }
 
 .item.selected {

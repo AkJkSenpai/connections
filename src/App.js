@@ -146,7 +146,7 @@ const App = () => {
             className="completed-group"
             style={{ backgroundColor: categoryColors[group.category] }}
           >
-            {group.category} group completed: {group.words.join(', ')}
+            <span className="category-name">{group.category}</span> <br></br> {group.words.join(', ')}
           </div>
         ))}
       </div>
