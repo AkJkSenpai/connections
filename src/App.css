@@ -1,11 +1,12 @@
 .app {
   font-family: Arial, sans-serif;
   text-align: center;
+  padding: 20px;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   gap: 10px;
   margin: 20px;
 }
@@ -15,6 +16,8 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   cursor: pointer;
+  text-align: center;
+  font-size: 14px;
 }
 
 .item.selected {
@@ -39,6 +42,9 @@
 
 .button-container {
   margin: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }
 
 .submit-button, .shuffle-button {
@@ -48,6 +54,8 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  flex: 1;
+  max-width: 200px;
 }
 
 .submit-button {
@@ -66,4 +74,16 @@
 
 .shuffle-button:hover {
   background-color: #007bb5;
+}
+
+@media (max-width: 768px) {
+  .item {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .submit-button, .shuffle-button {
+    font-size: 14px;
+    padding: 8px 15px;
+  }
 }
