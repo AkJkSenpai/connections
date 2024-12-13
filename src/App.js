@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
 const App = () => {
@@ -22,8 +22,12 @@ const App = () => {
     { text: 'Orchid', category: 'Flowers' }
   ];
 
+  const shuffleArray = (array) => {
+    return [...array].sort(() => Math.random() - 0.5);
+  };
+
   const [items, setItems] = useState(
-    initialData.map((item) => ({ ...item, selected: false, hidden: false }))
+    shuffleArray(initialData.map((item) => ({ ...item, selected: false, hidden: false })))
   );
   const [selectedItems, setSelectedItems] = useState([]);
   const [message, setMessage] = useState('');
@@ -127,9 +131,7 @@ const App = () => {
   };
 
   const shuffleItems = () => {
-    const shuffled = [...items]
-      .sort(() => Math.random() - 0.5)
-      .map((item) => ({ ...item, selected: false }));
+    const shuffled = shuffleArray(items).map((item) => ({ ...item, selected: false }));
     setItems(shuffled);
     setSelectedItems([]);
     setMessage('');
