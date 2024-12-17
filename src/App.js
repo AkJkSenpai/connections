@@ -4,22 +4,22 @@ import './App.css';
 const App = () => {
   // Example data
   const initialData = [
-    { text: 'Apple', category: 'Fruits' },
-    { text: 'Banana', category: 'Fruits' },
-    { text: 'Carrot', category: 'Vegetables' },
-    { text: 'Tomato', category: 'Vegetables' },
-    { text: 'Dog', category: 'Animals' },
-    { text: 'Cat', category: 'Animals' },
-    { text: 'Rose', category: 'Flowers' },
-    { text: 'Tulip', category: 'Flowers' },
-    { text: 'Orange', category: 'Fruits' },
-    { text: 'Lettuce', category: 'Vegetables' },
-    { text: 'Lion', category: 'Animals' },
-    { text: 'Daisy', category: 'Flowers' },
-    { text: 'Strawberry', category: 'Fruits' },
-    { text: 'Cucumber', category: 'Vegetables' },
-    { text: 'Elephant', category: 'Animals' },
-    { text: 'Orchid', category: 'Flowers' }
+    { text: 'TZOUKKI TZOUKKI', category: 'SANONTOJA' },
+    { text: 'CHILLISTI', category: 'SANONTOJA' },
+    { text: 'GLUG GLUG VITTU', category: 'SANONTOJA' },
+    { text: 'TIMEII', category: 'SANONTOJA' },
+    { text: 'KORTSU', category: 'KÄMPPÄAPPROT' },
+    { text: 'TINDER', category: 'KÄMPPÄAPPROT' },
+    { text: 'KAHOOT', category: 'KÄMPPÄAPPROT' },
+    { text: 'GIN TONIC', category: 'KÄMPPÄAPPROT' },
+    { text: 'TARRA', category: 'DRAAMA' },
+    { text: 'VESINOKKAELÄIN', category: 'DRAAMA' },
+    { text: 'DILDOBINGO', category: 'DRAAMA' },
+    { text: 'SOMETIIMI', category: 'DRAAMA' },
+    { text: 'BABBY', category: 'INSIDEJUTUT' },
+    { text: 'TUOPPI', category: 'INSIDEJUTUT' },
+    { text: '👁️👁️', category: 'INSIDEJUTUT' },
+    { text: 'Orchid', category: 'INSIDEJUTUT' }
   ];
 
   const shuffleArray = (array) => {
@@ -39,10 +39,10 @@ const App = () => {
   const maxMistakes = 4;
 
   const categoryColors = {
-    Fruits: '#FFD700', // Yellow
-    Vegetables: '#90EE90', // Green
-    Animals: '#ADD8E6', // Light Blue
-    Flowers: '#DDA0DD', // Purple
+    SANONTOJA: '#FFD700', // Yellow
+    KÄMPPÄAPPROT: '#90EE90', // Green
+    DRAAMA: '#ADD8E6', // Light Blue
+    INSIDEJUTUT: '#DDA0DD', // Purple
   };
 
   useEffect(() => {
