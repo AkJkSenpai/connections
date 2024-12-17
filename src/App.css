@@ -6,14 +6,15 @@
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, 1fr); /* Ensures 4x4 grid */
   gap: 10px;
-  margin: 20px;
+  margin: 20px auto;
+  max-width: 600px;
 }
 
+/* Grid Item Styling */
 .item {
-  padding: 10px;
-  height: 70px; /* Fixed height for uniformity */
+  height: 70px; /* Fixed height for uniform size */
   border: 1px solid #ccc;
   border-radius: 4px;
   cursor: pointer;
@@ -21,56 +22,39 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+  padding: 5px; /* Add padding to prevent text from touching edges */
+  overflow: hidden; /* Prevent overflow */
+  word-wrap: break-word;
   box-sizing: border-box;
-  overflow: hidden; /* Prevents overflow */
-  word-wrap: break-word; /* Break words that are too long */
-  white-space: normal; /* Allow multiline text */
 }
 
 .item-text {
-  font-size: 12px; /* Adjust text size for long words */
-  line-height: 1.2; /* Improve line spacing for multiline text */
-  word-wrap: break-word; /* Force long words to break */
-  word-break: break-word; /* Ensure words break if needed */
+  font-size: 12px; /* Base font size */
+  line-height: 1.2; /* Improve spacing for multiple lines */
   text-align: center;
+  white-space: normal; /* Allow text wrapping */
 }
 
 .item.selected {
   background-color: lightblue;
 }
 
-.message {
-  margin-top: 20px;
-  font-weight: bold;
-}
-
-.completed-groups {
-  margin-bottom: 20px;
-}
-
-.completed-group {
-  color: #155724;
-  padding: 10px;
-  border-radius: 4px;
-  margin-bottom: 5px;
-}
-
+/* Buttons */
 .button-container {
-  margin: 20px;
   display: flex;
   justify-content: center;
   gap: 10px;
+  flex-wrap: wrap; /* Wrap buttons on smaller screens */
 }
 
 .submit-button, .shuffle-button {
   padding: 10px 20px;
-  margin: 5px;
-  font-size: 16px;
+  font-size: 14px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  flex: 1;
-  max-width: 200px;
+  width: 45%;
+  max-width: 150px;
 }
 
 .submit-button {
@@ -91,66 +75,62 @@
   background-color: #007bb5;
 }
 
+/* Mistakes Remaining */
 .mistakes {
-  margin: 20px;
-  font-size: 16px;
+  margin: 10px 0;
+  font-size: 14px;
   font-weight: bold;
 }
 
 .mistake-dot {
   display: inline-block;
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   margin-left: 5px;
   background-color: #555;
   border-radius: 50%;
 }
 
-.win-box {
+/* Win and Lose Boxes */
+.win-box, .lose-box {
   margin: 20px auto;
-  padding: 20px;
-  border: 2px solid #4CAF50;
+  padding: 15px;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 8px;
+  max-width: 250px;
+}
+
+.win-box {
   background-color: #dff0d8;
   color: #3c763d;
-  font-size: 18px;
-  border-radius: 10px;
-  max-width: 300px;
+  border: 2px solid #4CAF50;
 }
 
 .lose-box {
-  margin: 20px auto;
-  padding: 20px;
-  border: 2px solid #f44336;
   background-color: #f8d7da;
   color: #721c24;
-  font-size: 18px;
-  border-radius: 10px;
-  max-width: 300px;
+  border: 2px solid #f44336;
 }
 
+/* Mobile Adjustments */
 @media (max-width: 768px) {
   .grid {
-    grid-template-columns: repeat(4, 1fr);
     gap: 5px;
   }
 
   .item {
-    font-size: 10px; /* Smaller text for mobile */
-    padding: 6px;
-    height: 60px; /* Adjust height for small screens */
+    height: 60px; /* Smaller height for small screens */
+    font-size: 10px; /* Reduce text size */
+    padding: 3px; /* Reduce padding */
   }
 
   .item-text {
-    font-size: 10px;
+    font-size: 10px; /* Smaller text for better fit */
   }
 
   .submit-button, .shuffle-button {
-    font-size: 14px;
-    padding: 8px 15px;
-  }
-
-  .button-container {
-    flex-direction: column;
-    align-items: center;
+    width: 100%; /* Full-width buttons */
+    font-size: 12px;
   }
 }
