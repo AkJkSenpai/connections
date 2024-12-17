@@ -13,7 +13,7 @@ const App = () => {
     { text: 'KAHOOT', category: 'KÄMPPÄAPPROT' },
     { text: 'GIN TONIC', category: 'KÄMPPÄAPPROT' },
     { text: 'TARRA', category: 'DRAAMA' },
-    { text: 'VESINOKKAELÄIN', category: 'DRAAMA' },
+    { text: 'VESINOKKA- ELÄIN', category: 'DRAAMA' },
     { text: 'DILDOBINGO', category: 'DRAAMA' },
     { text: 'SOMETIIMI', category: 'DRAAMA' },
     { text: 'BABBY', category: 'INSIDEJUTUT' },
