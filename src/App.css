@@ -13,18 +13,25 @@
 
 .item {
   padding: 10px;
+  height: 70px; /* Fixed height for uniformity */
   border: 1px solid #ccc;
   border-radius: 4px;
   cursor: pointer;
-  text-align: center;
-  font-size: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
+  box-sizing: border-box;
+  overflow: hidden; /* Prevents overflow */
+  word-wrap: break-word; /* Break words that are too long */
+  white-space: normal; /* Allow multiline text */
 }
 
 .item-text {
-  word-wrap: break-word;
+  font-size: 12px; /* Adjust text size for long words */
+  line-height: 1.2; /* Improve line spacing for multiline text */
+  word-wrap: break-word; /* Force long words to break */
+  word-break: break-word; /* Ensure words break if needed */
   text-align: center;
 }
 
@@ -42,14 +49,10 @@
 }
 
 .completed-group {
-  color: black;
+  color: #155724;
   padding: 10px;
   border-radius: 4px;
   margin-bottom: 5px;
-}
-
-.category-name {
-  font-weight: 900;
 }
 
 .button-container {
@@ -132,8 +135,13 @@
   }
 
   .item {
-    font-size: 12px;
-    padding: 8px;
+    font-size: 10px; /* Smaller text for mobile */
+    padding: 6px;
+    height: 60px; /* Adjust height for small screens */
+  }
+
+  .item-text {
+    font-size: 10px;
   }
 
   .submit-button, .shuffle-button {
