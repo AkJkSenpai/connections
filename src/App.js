@@ -8,18 +8,18 @@ const App = () => {
     { text: 'CHILLISTI', category: 'SANONTOJA' },
     { text: 'GLUG GLUG VITTU', category: 'SANONTOJA' },
     { text: 'TIMEII', category: 'SANONTOJA' },
-    { text: 'KORTSU', category: 'KÄMPPÄAPPROT' },
-    { text: 'TINDER', category: 'KÄMPPÄAPPROT' },
-    { text: 'KAHOOT', category: 'KÄMPPÄAPPROT' },
-    { text: 'GIN TONIC', category: 'KÄMPPÄAPPROT' },
-    { text: 'TARRA', category: 'DRAAMA' },
-    { text: 'VESINOKKA- ELÄIN', category: 'DRAAMA' },
-    { text: 'DILDOBINGO', category: 'DRAAMA' },
-    { text: 'SOMETIIMI', category: 'DRAAMA' },
-    { text: 'BABBY', category: 'INSIDEJUTUT' },
-    { text: 'TUOPPI', category: 'INSIDEJUTUT' },
-    { text: '👁️👁️', category: 'INSIDEJUTUT' },
-    { text: 'Orchid', category: 'INSIDEJUTUT' }
+    { text: 'KONDOMI', category: 'EKAT KÄMPPÄAPPROT' },
+    { text: 'TINDER', category: 'EKAT KÄMPPÄAPPROT' },
+    { text: 'KAHOOT', category: 'EKAT KÄMPPÄAPPROT' },
+    { text: 'TYKKIMIES- SHOTTI', category: 'EKAT KÄMPPÄAPPROT' },
+    { text: 'RISKITARRAT', category: 'DRAAMAA' },
+    { text: 'VESINOKKA- ELÄIN', category: 'DRAAMAA' },
+    { text: 'DILDOBINGO', category: 'DRAAMAA' },
+    { text: 'NETTISIVUT', category: 'DRAAMAA' },
+    { text: 'BABBY', category: 'MIELEENPAINUVIMMAT' },
+    { text: 'VIINIPULLO', category: 'MIELEENPAINUVIMMAT' },
+    { text: '👁️👁️', category: 'MIELEENPAINUVIMMAT' },
+    { text: 'BETONIKUUTIO', category: 'MIELEENPAINUVIMMAT' }
   ];
 
   const shuffleArray = (array) => {
@@ -39,23 +39,23 @@ const App = () => {
   const maxMistakes = 4;
 
   const categoryColors = {
-    SANONTOJA: '#FFD700', // Yellow
-    KÄMPPÄAPPROT: '#90EE90', // Green
-    DRAAMA: '#ADD8E6', // Light Blue
-    INSIDEJUTUT: '#DDA0DD', // Purple
+    "SANONTOJA": '#FFD700', // Yellow
+    "EKAT KÄMPPÄAPPROT": '#90EE90', // Green
+    "DRAAMAA": '#ADD8E6', // Light Blue
+    "MIELEENPAINUVIMMAT": '#DDA0DD', // Purple
   };
 
   useEffect(() => {
     if (completedGroups.length === 4) {
       setGameWon(true);
-      setMessage('Congratulations! You completed all groups!');
+      setMessage('Onnittelut!');
     }
   }, [completedGroups]);
 
   useEffect(() => {
     if (mistakes >= maxMistakes) {
       setGameOver(true);
-      setMessage('Game over! You have used all your tries.');
+      setMessage('Käytit kaikki yritykset.');
     }
   }, [mistakes]);
 
@@ -76,7 +76,7 @@ const App = () => {
       newItems[index].selected = !item.selected;
       setItems(newItems);
     } else {
-      setMessage('You can only select up to 4 items at a time.');
+      setMessage('Voit valita enintään neljä!');
     }
   };
 
@@ -89,7 +89,6 @@ const App = () => {
 
     if (uniqueCategories.length === 1 && selected.length === 4) {
       // Correct group
-      setMessage('Correct! All items belong to the same category.');
       setCompletedGroups([
         ...completedGroups,
         { category: uniqueCategories[0], words: selected.map((item) => item.text) },
@@ -111,10 +110,10 @@ const App = () => {
         setMistakes((prev) => {
           const newMistakes = prev + 1;
           if (newMistakes >= maxMistakes) {
-            setMessage('Game over! You have used all your tries.');
+            setMessage('Käytit kaikki yritykset.');
             setSelectedItems([]);
           } else {
-            setMessage('You are one away from completing a group!');
+            setMessage('Arvaus oli yhden päässä!');
           }
           return newMistakes;
         });
@@ -122,25 +121,16 @@ const App = () => {
         setMistakes((prev) => {
           const newMistakes = prev + 1;
           if (newMistakes >= maxMistakes) {
-            setMessage('Game over! You have used all your tries.');
+            setMessage('Käytit kaikki yritykset.');
             setSelectedItems([]);
           } else {
-            setMessage('Incorrect selection. Try again!');
+            setMessage('Väärin! Yritä uudestaan.');
           }
           return newMistakes;
         });
       }
     } else {
-      setMistakes((prev) => {
-        const newMistakes = prev + 1;
-        if (newMistakes >= maxMistakes) {
-          setMessage('Game over! You have used all your tries.');
-          setSelectedItems([]);
-        } else {
-          setMessage('Incorrect selection. Try again!');
-        }
-        return newMistakes;
-      });
+      setMessage("Valitse neljä!")
     }
   };
 
@@ -155,9 +145,9 @@ const App = () => {
 
   return (
     <div className="app">
-      <h1>Connections Game</h1>
-      {gameWon && <div className="win-box">You Win! 🎉</div>}
-      {gameOver && <div className="lose-box">Game Over! 😢</div>}
+      <h1>Hallitusvuosi -23</h1>
+      {gameWon && <div className="win-box">Onnea! Selvisit hallitusvuodesta 🎉</div>}
+      {gameOver && <div className="lose-box">Otit ison L:än! 😢</div>}
       <div className="completed-groups">
         {completedGroups.map((group, index) => (
           <div
@@ -170,7 +160,7 @@ const App = () => {
         ))}
       </div>
       <div className="mistakes">
-        Mistakes remaining:
+        Yrityksiä jäljellä:
         {[...Array(Math.max(0, maxMistakes - mistakes))].map((_, index) => (
           <span key={index} className="mistake-dot"></span>
         ))}
@@ -189,8 +179,8 @@ const App = () => {
         ))}
       </div>
       <div className="button-container">
-        <button className="submit-button" onClick={checkCategories}>Submit</button>
-        <button className="shuffle-button" onClick={shuffleItems}>Shuffle</button>
+        <button className="submit-button" onClick={checkCategories}>Arvaa</button>
+        <button className="shuffle-button" onClick={shuffleItems}>Sekoita</button>
       </div>
       <p className="message">{message}</p>
     </div>
