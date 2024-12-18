@@ -39,10 +39,10 @@ const App = () => {
   const maxMistakes = 4;
 
   const categoryColors = {
-    "SANONTOJA": '#FFD700', // Yellow
-    "EKAT KÄMPPÄAPPROT": '#90EE90', // Green
-    "DRAAMAA": '#ADD8E6', // Light Blue
-    "MIELEENPAINUVIMMAT": '#DDA0DD', // Purple
+    "SANONTOJA": '#f0d96f', // Yellow
+    "DRAAMAA": '#a1c05a', // Green
+    "EKAT KÄMPPÄAPPROT": '#b4c2e8', // Light Blue
+    "MIELEENPAINUVIMMAT": '#ba83c3', // Purple
   };
 
   useEffect(() => {
