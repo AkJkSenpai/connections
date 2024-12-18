@@ -26,6 +26,7 @@
   overflow: hidden; /* Prevent overflow */
   word-wrap: break-word;
   box-sizing: border-box;
+  background-color: #efefe7;
 }
 
 .item-text {
@@ -48,7 +49,8 @@
 }
 
 .item.selected {
-  background-color: lightblue;
+  background-color: #575850;
+  color: white;
 }
 
 /* Buttons */
